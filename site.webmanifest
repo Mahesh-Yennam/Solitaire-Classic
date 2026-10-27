@@ -1,0 +1,16 @@
+{
+  "name": "Solitaire Classic - Klondike Patience Card Game",
+  "short_name": "Solitaire",
+  "description": "Play classic Klondike Solitaire online. Features Turn 1 and Turn 3 draw modes, smooth drag and drop, unlimited undo, hints, and autocomplete.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#022c22",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,678 @@
+/* ==========================================================================
+   SOLITAIRE CLASSIC (KLONDIKE) - Premium Velvet Felt Stylesheet
+   ========================================================================== */
+
+:root {
+  --bg-felt-deep: #022c22;
+  --bg-felt-light: #064e3b;
+  --felt-border: rgba(16, 185, 129, 0.25);
+  --felt-slot-bg: rgba(2, 44, 34, 0.55);
+  --felt-slot-border: rgba(52, 211, 153, 0.3);
+
+  --card-bg: #ffffff;
+  --card-border: #cbd5e1;
+  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  --card-shadow-drag: 0 14px 28px rgba(0, 0, 0, 0.5), 0 0 15px rgba(52, 211, 153, 0.4);
+  --card-radius: 8px;
+
+  --suit-red: #dc2626;
+  --suit-black: #0f172a;
+
+  --color-gold: #fbbf24;
+  --color-amber: #d97706;
+  --color-emerald: #10b981;
+  --color-cyan: #38bdf8;
+  --color-rose: #f43f5e;
+
+  --font-ui: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--bg-felt-deep);
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 20% 90%, rgba(6, 78, 59, 0.4) 0%, transparent 60%);
+  color: #f8fafc;
+  font-family: var(--font-ui);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* --- Standalone Top Gamility Ribbon --- */
+.top-nav-ribbon {
+  background: rgba(2, 36, 28, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+}
+
+.ribbon-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.ribbon-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-emerald);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+.ribbon-back-btn:hover {
+  background: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  color: #fff;
+}
+
+/* --- Main Layout Wrapper --- */
+.game-wrapper {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex: 1;
+}
+
+/* --- Header with Live Score HUD --- */
+.arcade-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.game-title-badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title-badge h1 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.game-mode-subtitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-emerald);
+  letter-spacing: 0.03em;
+}
+
+.hud-panel {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(2, 44, 34, 0.85);
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--felt-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hud-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-gold {
+  color: var(--color-gold);
+}
+
+.stat-cyan {
+  color: var(--color-cyan);
+}
+
+.stat-timer {
+  color: var(--color-emerald);
+}
+
+/* --- Controls Toolbar --- */
+.controls-toolbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-btn-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tool-icon-btn {
+  background: rgba(2, 44, 34, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.tool-icon-btn:hover {
+  border-color: var(--color-emerald);
+  color: var(--color-emerald);
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.tool-icon-btn.highlight-btn {
+  background: linear-gradient(135deg, #059669, #10b981);
+  border-color: #34d399;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+  animation: pulseAutocomplete 1.8s infinite ease-in-out;
+}
+
+.tool-icon-btn.hidden {
+  display: none !important;
+}
+
+@keyframes pulseAutocomplete {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* ==========================================================================
+   SOLITAIRE FELT TABLE STAGE
+   ========================================================================== */
+.table-container {
+  width: 100%;
+  background: radial-gradient(circle at 50% 35%, #064e3b 0%, #022c22 85%, #011c15 100%);
+  border: 3px solid #047857;
+  border-radius: 18px;
+  box-shadow: 
+    inset 0 0 50px rgba(0, 0, 0, 0.75),
+    0 12px 35px rgba(0, 0, 0, 0.7);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  min-height: 580px;
+}
+
+/* Top Row: Stock, Waste, and Foundations */
+.table-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.stock-waste-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.foundations-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Slot Placeholders */
+.card-slot {
+  width: clamp(52px, 11.5vw, 86px);
+  aspect-ratio: 5 / 7;
+  background: var(--felt-slot-bg);
+  border: 2px dashed var(--felt-slot-border);
+  border-radius: var(--card-radius);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.card-slot:hover {
+  border-color: rgba(52, 211, 153, 0.6);
+}
+
+.slot-placeholder {
+  font-size: 1.4rem;
+  opacity: 0.4;
+}
+
+.slot-suit-watermark {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  opacity: 0.22;
+  font-weight: 900;
+}
+
+.slot-suit-watermark.red-suit {
+  color: #ef4444;
+}
+
+.slot-suit-watermark.black-suit {
+  color: #94a3b8;
+}
+
+/* Tableau Columns Area */
+.tableau-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: clamp(4px, 1.2vw, 12px);
+  width: 100%;
+  min-height: 380px;
+}
+
+.tableau-column {
+  width: 100%;
+  min-height: 120px;
+  border-radius: var(--card-radius);
+  border: 2px dashed rgba(52, 211, 153, 0.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Active drop target highlight */
+.tableau-column.drag-over,
+.card-slot.drag-over {
+  border-color: var(--color-gold) !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+}
+
+/* ==========================================================================
+   PLAYING CARDS AESTHETICS
+   ========================================================================== */
+.solitaire-card {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.35rem 0.4rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.solitaire-card.red {
+  color: var(--suit-red);
+}
+
+.solitaire-card.black {
+  color: var(--suit-black);
+}
+
+/* Card Top Index */
+.card-corner-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  font-weight: 800;
+  font-size: clamp(0.75rem, 1.8vw, 1.15rem);
+  width: fit-content;
+}
+
+.card-corner-index .card-suit {
+  font-size: 0.85em;
+  margin-top: 1px;
+}
+
+/* Card Center Big Glyph */
+.card-center-glyph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.4rem, 3.8vw, 2.4rem);
+  line-height: 1;
+  opacity: 0.9;
+  font-weight: 900;
+}
+
+/* Card Bottom Inverted Index */
+.card-bottom-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  font-weight: 800;
+  font-size: clamp(0.75rem, 1.8vw, 1.15rem);
+  transform: rotate(180deg);
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.card-bottom-index .card-suit {
+  font-size: 0.85em;
+  margin-top: 1px;
+}
+
+/* Card Back (Facedown) */
+.solitaire-card.face-down {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  border: 2px solid #38bdf8;
+  padding: 0;
+  cursor: default;
+}
+
+.solitaire-card.face-down::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 4px;
+  background-image: 
+    radial-gradient(#38bdf8 15%, transparent 16%),
+    radial-gradient(#0284c7 15%, transparent 16%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  opacity: 0.75;
+}
+
+/* Highlighted (Hint) */
+.solitaire-card.hint-highlight {
+  box-shadow: 0 0 18px var(--color-gold), 0 0 28px var(--color-amber) !important;
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+}
+
+/* Dragging State */
+.solitaire-card.dragging {
+  opacity: 0.85;
+  box-shadow: var(--card-shadow-drag);
+  transform: scale(1.05) rotate(2deg);
+  z-index: 1000 !important;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   OVERLAYS AND MODALS
+   ========================================================================== */
+.table-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 44, 34, 0.88);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  padding: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.table-overlay.hidden {
+  display: none !important;
+}
+
+.overlay-modal {
+  background: #022c22;
+  border: 2px solid var(--color-emerald);
+  border-radius: 16px;
+  max-width: 440px;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+.overlay-modal h2 {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.overlay-modal p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.pause-icon {
+  font-size: 2.4rem;
+}
+
+.victory-ribbon {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.victory-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  background: rgba(6, 78, 59, 0.4);
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.v-label {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.v-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.arcade-action-btn {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.arcade-action-btn:hover {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+/* Victory Canvas */
+.victory-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 400;
+}
+
+/* --- Instructions & Protocol Card --- */
+.game-instructions-card {
+  width: 100%;
+  margin-top: 1rem;
+  background: rgba(2, 44, 34, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.game-instructions-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--color-emerald);
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.legend-badge {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 768px) {
+  .arcade-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 0.65rem;
+  }
+
+  .game-title-badge {
+    align-items: center;
+  }
+
+  .hud-panel {
+    justify-content: space-around;
+    gap: 0.5rem;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .hud-stat .hud-val {
+    font-size: 1rem;
+  }
+
+  .controls-toolbar {
+    justify-content: center;
+  }
+
+  .toolbar-btn-group {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .table-container {
+    padding: 0.85rem 0.5rem;
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-wrapper {
+    padding: 0.5rem 0.5rem 2rem;
+  }
+
+  .card-slot {
+    border-radius: 6px;
+  }
+
+  .solitaire-card {
+    border-radius: 6px;
+    padding: 0.2rem 0.25rem;
+  }
+
+  .tool-icon-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .card-center-glyph {
+    display: none; /* Hide center glyph on ultra-compact mobile to prevent overlap */
+  }
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFQ8M0VSFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RFQ8M0VSFN');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solitaire Classic - Free Online Klondike Patience Card Game | Gamility</title>
+  <meta name="description" content="Play free Klondike Solitaire online. Features Turn 1 and Turn 3 draw modes, smooth drag and drop, unlimited undo, hints, and autocomplete on green velvet felt.">
+  <meta name="keywords" content="solitaire, klondike solitaire, patience card game, free solitaire online, card game, gamility">
+  <meta name="theme-color" content="#059669">
+
+    <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Solitaire Classic - Free Online Klondike Patience Card Game | Gamility">
+  <meta property="og:description" content="Play free Klondike Solitaire online. Features Turn 1 and Turn 3 draw modes, smooth drag and drop, unlimited undo, hints, and autocomplete on green velvet felt.">
+  <meta property="og:image" content="preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Solitaire Classic - Free Online Klondike Patience Card Game | Gamility">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solitaire Classic - Free Online Klondike Patience Card Game | Gamility">
+  <meta name="twitter:description" content="Play free Klondike Solitaire online. Features Turn 1 and Turn 3 draw modes, smooth drag and drop, unlimited undo, hints, and autocomplete on green velvet felt.">
+  <meta name="twitter:image" content="preview.png">
+
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Solitaire Classic",
+    "url": "https://mahesh-yennam.github.io/Gamility/games/solitaire-classic/",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All",
+    "genre": ["Card Game", "Patience", "Casual"],
+    "description": "Klondike Solitaire patience card game featuring responsive drag-and-drop, Turn 1 & Turn 3 modes, unlimited undo, and synthesized Web Audio SFX."
+  }
+  </script>
+</head>
+<body>
+  <!-- Top Gamility Ribbon for Standalone & Repos Navigation -->
+  <header class="top-nav-ribbon" role="banner">
+    <a href="https://mahesh-yennam.github.io/Gamility/" class="ribbon-brand" title="Gamility Home">
+      <svg width="24" height="24" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4L4 12V28L20 36L36 28V12L20 4Z" stroke="#10b981" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M20 12L12 16V24L20 28L28 24V16L20 12Z" fill="#059669" fill-opacity="0.85"/>
+        <circle cx="20" cy="20" r="3" fill="#ffffff"/>
+      </svg>
+      <span>Gamility Arcade</span>
+    </a>
+    <a href="https://mahesh-yennam.github.io/Gamility/games.html" class="ribbon-back-btn" title="Back to All Games">
+      <span>←</span> Back to Games
+    </a>
+  </header>
+
+  <!-- Main Game Stage -->
+  <main class="game-wrapper" id="gameWrapper">
+    <!-- Header with Live HUD -->
+    <header class="arcade-header">
+      <div class="game-title-badge">
+        <h1>Solitaire Classic</h1>
+        <span class="game-mode-subtitle" id="modeSubtitle">Klondike • Turn 1 Mode</span>
+      </div>
+      <div class="hud-panel" aria-label="Game HUD">
+        <div class="hud-stat">
+          <span class="hud-label">Score</span>
+          <span id="scoreVal" class="hud-val stat-gold">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Moves</span>
+          <span id="movesVal" class="hud-val stat-cyan">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Time</span>
+          <span id="timerVal" class="hud-val stat-timer">00:00</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Best</span>
+          <span id="bestScoreVal" class="hud-val">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Toolbar -->
+    <div class="controls-toolbar">
+      <div class="toolbar-btn-group">
+        <button id="newGameBtn" class="tool-icon-btn" type="button" title="Start a fresh deal">
+          <span>🔄</span> New Deal
+        </button>
+        <button id="undoBtn" class="tool-icon-btn" type="button" title="Undo last card move (Ctrl+Z)">
+          <span>↩️</span> Undo
+        </button>
+        <button id="drawModeBtn" class="tool-icon-btn" type="button" title="Toggle Draw 1 or Draw 3">
+          <span>🎴</span> Draw 1
+        </button>
+        <button id="hintBtn" class="tool-icon-btn" type="button" title="Highlight legal card move (H)">
+          <span>💡</span> Hint
+        </button>
+        <button id="pauseBtn" class="tool-icon-btn" type="button" title="Pause Game Timer (P)">
+          <span>⏸️</span> Pause
+        </button>
+        <button id="muteBtn" class="tool-icon-btn" type="button" title="Toggle Sound">
+          <span>🔊</span> Sound
+        </button>
+        <button id="autoCompleteBtn" class="tool-icon-btn highlight-btn hidden" type="button" title="Finish game automatically">
+          <span>⚡</span> Autocomplete
+        </button>
+      </div>
+    </div>
+
+    <!-- Green Felt Card Table Stage -->
+    <div class="table-container" id="tableContainer">
+      <!-- Top Zone: Stock, Waste, and 4 Foundations -->
+      <div class="table-top-row">
+        <!-- Stock and Waste Group -->
+        <div class="stock-waste-group">
+          <div class="card-slot stock-slot" id="stockPile" title="Click to draw cards">
+            <div class="slot-placeholder">🔄</div>
+          </div>
+          <div class="card-slot waste-slot" id="wastePile" title="Drawn cards">
+            <div class="slot-placeholder"></div>
+          </div>
+        </div>
+
+        <!-- Four Suit Foundations -->
+        <div class="foundations-group">
+          <div class="card-slot foundation-slot" id="foundation-0" data-suit="hearts" data-fidx="0" title="Hearts Foundation (A to K)">
+            <div class="slot-suit-watermark red-suit">♥</div>
+          </div>
+          <div class="card-slot foundation-slot" id="foundation-1" data-suit="diamonds" data-fidx="1" title="Diamonds Foundation (A to K)">
+            <div class="slot-suit-watermark red-suit">♦</div>
+          </div>
+          <div class="card-slot foundation-slot" id="foundation-2" data-suit="clubs" data-fidx="2" title="Clubs Foundation (A to K)">
+            <div class="slot-suit-watermark black-suit">♣</div>
+          </div>
+          <div class="card-slot foundation-slot" id="foundation-3" data-suit="spades" data-fidx="3" title="Spades Foundation (A to K)">
+            <div class="slot-suit-watermark black-suit">♠</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Zone: 7 Tableau Columns -->
+      <div class="tableau-row" id="tableauRow">
+        <div class="tableau-column" id="tableau-0" data-col="0"></div>
+        <div class="tableau-column" id="tableau-1" data-col="1"></div>
+        <div class="tableau-column" id="tableau-2" data-col="2"></div>
+        <div class="tableau-column" id="tableau-3" data-col="3"></div>
+        <div class="tableau-column" id="tableau-4" data-col="4"></div>
+        <div class="tableau-column" id="tableau-5" data-col="5"></div>
+        <div class="tableau-column" id="tableau-6" data-col="6"></div>
+      </div>
+
+      <!-- Winning Card Cascade Canvas -->
+      <canvas id="victoryCanvas" class="victory-canvas hidden"></canvas>
+
+      <!-- In-Game Pause Screen -->
+      <div class="table-overlay hidden" id="pauseOverlay">
+        <div class="overlay-modal">
+          <div class="pause-icon">⏸️</div>
+          <h2>Game Paused</h2>
+          <p>The timer has stopped. Resume whenever you're ready.</p>
+          <button id="resumeBtn" class="arcade-action-btn">▶️ Resume Game</button>
+        </div>
+      </div>
+
+      <!-- Victory Modal Screen -->
+      <div class="table-overlay hidden" id="victoryOverlay">
+        <div class="overlay-modal victory-modal">
+          <div class="victory-ribbon">👑 VICTORY!</div>
+          <h2>Congratulations!</h2>
+          <p>You conquered the Klondike table and cleared all 4 foundations!</p>
+          <div class="victory-stats-grid">
+            <div class="v-stat">
+              <span class="v-label">Final Score</span>
+              <strong id="finalScore" class="v-val stat-gold">0</strong>
+            </div>
+            <div class="v-stat">
+              <span class="v-label">Total Moves</span>
+              <strong id="finalMoves" class="v-val stat-cyan">0</strong>
+            </div>
+            <div class="v-stat">
+              <span class="v-label">Time Taken</span>
+              <strong id="finalTime" class="v-val">00:00</strong>
+            </div>
+          </div>
+          <button id="playAgainBtn" class="arcade-action-btn pulse-glow">🃏 Play Another Deal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions & Rules Card -->
+    <section class="game-instructions-card" aria-label="Solitaire Rules and Controls Guide">
+      <h3>🃏 Klondike Solitaire Rules & Strategy</h3>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-badge">🏛️</span>
+          <div><strong>Foundations (Top-Right):</strong> Build each suit from <strong>Ace up to King</strong> (A, 2, 3... J, Q, K). Fill all four to win!</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">🎴</span>
+          <div><strong>Tableau Columns (Bottom):</strong> Build downward in <strong>alternating colors</strong> (Red 7 on Black 8). Only a <strong>King</strong> can fill an empty column.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">👆</span>
+          <div><strong>One-Tap Smart Move:</strong> Tap or click any face-up card to automatically send it to the best legal foundation or tableau spot. Double-click to auto-send to foundation.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">⚡</span>
+          <div><strong>Autocomplete:</strong> When all face-down cards on the board are flipped over, click <strong>Autocomplete</strong> to finish the game with a single touch!</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+        <strong>Desktop Controls:</strong> Drag and drop cards with mouse, or click cards for smart-moves. Press <strong>Ctrl+Z</strong> to Undo, <strong>H</strong> for Hint, and <strong>P</strong> to Pause.<br>
+        <strong>Mobile Controls:</strong> Drag cards smoothly with your finger or tap cards to auto-position them instantly.
+      </p>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>

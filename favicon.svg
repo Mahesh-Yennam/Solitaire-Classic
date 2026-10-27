@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="feltBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Green Velvet Table Base -->
+  <rect width="64" height="64" rx="14" fill="url(#feltBg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#059669" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Back Card (Tilted) -->
+  <g transform="rotate(-12 28 32)" filter="url(#cardShadow)">
+    <rect x="14" y="16" width="26" height="36" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Card Back Diamond Pattern -->
+    <path d="M27 24 L32 34 L27 44 L22 34 Z" fill="#0284c7" opacity="0.7"/>
+  </g>
+
+  <!-- Front Card (Ace of Spades) -->
+  <g transform="rotate(8 34 32)" filter="url(#cardShadow)">
+    <rect x="22" y="14" width="28" height="38" rx="4" fill="url(#cardGrad)" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Top-Left 'A' -->
+    <text x="26" y="23" font-family="'Outfit', sans-serif" font-weight="900" font-size="8" fill="#0f172a">A</text>
+    <!-- Center Spade Symbol -->
+    <path d="M36 26 C36 26 31 32 31 35 C31 37.5 33 39 35 38.5 L34.5 42 L37.5 42 L37 38.5 C39 39 41 37.5 41 35 C41 32 36 26 36 26 Z" fill="#0f172a"/>
+  </g>
+</svg>
